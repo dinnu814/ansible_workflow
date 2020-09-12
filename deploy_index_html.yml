@@ -1,0 +1,9 @@
+---
+- name: copy web.html via variables
+  hosts: linux
+  become: true
+  tasks:
+  - name: copying file        
+    copy:
+      src: "{{stage}}_web.html"
+      dest: /var/www/html/index.html
