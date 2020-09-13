@@ -1,0 +1,11 @@
+---
+- name: templates workshop
+  hosts: all
+  become: true
+  tasks:
+    - template:
+        src: motd-facts.j2
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
