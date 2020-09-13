@@ -1,0 +1,14 @@
+---
+- name: adding users to groups
+  hosts: linux
+  become: true
+  tasks:
+  - name: adding users to group
+    user:
+      name: "{{ item.username }}"
+      state: present
+      groups: "{{ item.groups }}"
+    loop:
+       - {username: 'dev_user', groups: 'ftp'}
+       - {username: 'qa_user', groups: 'ftp'}
+       - {username: 'prod_user', groups: 'apache'}

@@ -1,0 +1,10 @@
+---
+- name: setting up a ftp server
+  hosts: all
+  become: true
+  tasks:
+  - name: Install ftp server
+    yum:
+      name: vsftpd
+      state: latest
+    when: inventory_hostname in groups["ftpserver"]

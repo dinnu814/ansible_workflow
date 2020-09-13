@@ -1,0 +1,13 @@
+---
+- name: simple loops
+  hosts: linux
+  become: true
+  tasks:
+  - name: Adding users via loop
+    user:
+      name: "{{ item }}"
+      state: present
+    loop:
+       - dev_user
+       - qa_user
+       - prod_user
