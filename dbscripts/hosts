@@ -1,0 +1,2 @@
+[database]
+ip-172-31-86-116.ec2.internal ansible_python_interpreter=/usr/bin/python3.6

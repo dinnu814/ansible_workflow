@@ -1,0 +1,22 @@
+---
+- name: Ansible script for running the scripts in mysql database
+  hosts: database
+  become: true
+  tasks:
+    - name: Connect to the database with name 'db_hodersea'
+      mysql_db:
+          name: db_hodersea    
+          login_user: 
+          login_password: 
+    - name: download_script
+      get_url:
+        url: https://raw.githubusercontent.com/MadhaviBrc/SEA/master/db_hodersea.sql
+        dest: /home/ansible/dbscripts/output/
+      notify: run_script
+  handlers:
+    - name: run_script
+      mysql_db:
+        state: import
+        name: db_hodersea
+        target: /home/ansible/dbscripts/output/db_hodersea.sql
+
