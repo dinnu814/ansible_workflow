@@ -1,0 +1,18 @@
+---
+- hosts: linux
+  name: Installing Apache Service on Ubuntu
+  become: true
+  tasks:
+    - name: install httpd service
+      dnf:
+       name: httpd
+       state: latest
+    - name: starting httpd
+      service:
+        name: httpd      
+        enabled: true
+        state: started
+    - name: copying filed to web directory
+      copy:
+        src: /home/ansible/projects/ansible-files/conffile/web.html
+        dest: /var/www/html
