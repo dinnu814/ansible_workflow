@@ -1,2 +1,2 @@
 [linux]
-ip-172-31-91-130.ec2.internal
+ip-172-31-91-130.ec2.internal ansible_python_interpreter=/usr/bin/python
